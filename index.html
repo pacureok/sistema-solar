@@ -3,22 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orrery Pro - Explorador del Sistema Solar</title>
+    <title>Orrery Pro - Explorador Avanzado</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="controles-simulacion">
-        <button id="btn-pausa" onclick="alternarAnimacion()">Pausar Órbitas</button>
+        <div class="grupo-control">
+            <button id="btn-pausa" onclick="alternarAnimacion()">Pausar Tiempo</button>
+            <button id="btn-orbitas" onclick="alternarOrbitas()">Ocultar Órbitas</button>
+        </div>
+        <div class="grupo-control zoom-control">
+            <span>Cámara</span>
+            <button onclick="ajustarZoom(0.1)">+</button>
+            <button onclick="ajustarZoom(-0.1)">-</button>
+        </div>
     </div>
 
-    <div id="universo">
-        <div class="sol" onclick="mostrarInfo('Sol')"></div>
-        </div>
+    <div id="tooltip" class="oculto"></div>
+
+    <div id="camara">
+        <div id="universo">
+            <div class="sol" onclick="mostrarInfo('Sol')"></div>
+            </div>
+    </div>
 
     <div id="panel-info">
-        <div id="info-content">
-            </div>
+        <div id="info-content"></div>
     </div>
 
     <script src="script.js"></script>
