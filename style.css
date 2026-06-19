@@ -1,31 +1,56 @@
 :root {
-    --bg-color: #020205;
-    --panel-bg: rgba(15, 15, 25, 0.85);
+    --bg-color: #030308;
+    --panel-bg: rgba(10, 10, 18, 0.88);
     --text-main: #f4f4f9;
-    --text-muted: #a0a0b5;
-    --accent: #4b9cd3;
-    --border-color: rgba(255, 255, 255, 0.1);
+    --text-muted: #8e8eaf;
+    --border-color: rgba(255, 255, 255, 0.08);
 }
 
 body {
     margin: 0;
     padding: 0;
     background-color: var(--bg-color);
+    /* Fondo espacial profundo con doble capa de estrellas */
     background-image: 
-        radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+        radial-gradient(1px 1px at 25px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 75px 140px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 120px 30px, #rgba(255,255,255,0.8), rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 190px 80px, #ffffff, rgba(0,0,0,0));
     background-repeat: repeat;
-    background-size: 200px 200px;
+    background-size: 300px 300px;
     color: var(--text-main);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     overflow: hidden;
     display: flex;
     height: 100vh;
 }
 
-/* Contenedor de la Simulación */
+/* Panel de Controles Flotante */
+#controles-simulacion {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+#controles-simulacion button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+    transition: all 0.2s ease;
+}
+
+#controles-simulacion button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Lienzo del Universo con Perspectiva 3D */
 #universo {
     position: relative;
     width: 65vw;
@@ -33,158 +58,163 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px;
+    perspective: 1600px;
+    transform-style: preserve-3d;
 }
 
-/* Panel de Información Estilo Glassmorphism */
+/* Panel de Información Lateral Estilo Neumorfismo de Cristal */
 #panel-info {
     width: 35vw;
     height: 100vh;
     background: var(--panel-bg);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-left: 1px solid var(--border-color);
     padding: 40px;
     box-sizing: border-box;
     overflow-y: auto;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.7);
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
-#panel-info::-webkit-scrollbar {
-    width: 8px;
-}
-#panel-info::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.2);
-    border-radius: 4px;
-}
+#panel-info::-webkit-scrollbar { width: 6px; }
+#panel-info::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
 
-/* Tipografía del Panel */
 h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    font-weight: 700;
+    margin: 0 0 5px 0;
+    font-size: 2.8rem;
+    font-weight: 800;
     letter-spacing: -1px;
-    text-transform: uppercase;
 }
 
 .etiqueta-tipo {
     display: inline-block;
-    padding: 4px 12px;
-    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 14px;
+    background: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    font-size: 0.85rem;
+    border-radius: 30px;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-muted);
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 p.descripcion {
     font-size: 1.05rem;
     line-height: 1.7;
-    color: #d1d1e0;
-    margin: 0 0 20px 0;
+    color: #cbd5e1;
+    margin: 0 0 30px 0;
 }
 
-/* Cuadrícula de Datos Científicos */
+/* Cuadrícula de Parámetros de la NASA */
 .datos-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
     border-top: 1px solid var(--border-color);
-    padding-top: 20px;
+    padding-top: 25px;
 }
 
 .dato-item {
-    background: rgba(0, 0, 0, 0.3);
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.03);
 }
 
 .dato-item span {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .dato-item strong {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 600;
 }
 
-/* Elementos del Sistema Solar */
+/* El Sol - Centro Radiante */
 .sol {
     position: absolute;
-    width: 90px;
-    height: 90px;
-    background: radial-gradient(circle at 30% 30%, #ffffff, #ffcc00, #ff6600);
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle at 30% 30%, #ffffff, #ffb300, #ff3c00);
     border-radius: 50%;
-    box-shadow: 0 0 60px 10px rgba(255, 102, 0, 0.6), 0 0 100px 20px rgba(255, 204, 0, 0.3);
+    box-shadow: 0 0 60px 15px rgba(255, 90, 0, 0.5), 0 0 120px 30px rgba(255, 200, 0, 0.2);
     cursor: pointer;
-    z-index: 100;
-    transition: transform 0.3s ease;
+    z-index: 500;
+    transform: rotateX(-70deg); /* Contrarresta la inclinación del universo */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.sol:hover { transform: scale(1.1); }
+.sol:hover { transform: rotateX(-70deg) scale(1.15); }
 
-/* Órbitas circulares */
+/* Órbitas inclinadas en el espacio 3D */
 .orbita {
     position: absolute;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 50%;
+    transform: rotateX(70deg); /* Genera la perspectiva elíptica */
+    transform-style: preserve-3d;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform-style: preserve-3d;
 }
 
+/* Contenedor que orbita */
 .planeta-contenedor {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    transform-style: preserve-3d;
 }
 
+/* El cuerpo esférico del planeta */
 .planeta {
     border-radius: 50%;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: inset -4px -4px 10px rgba(0,0,0,0.6), 0 0 10px rgba(255,255,255,0.2);
+    transform-style: preserve-3d;
+    transform: rotateX(-70deg); /* Hace que el planeta apunte siempre hacia la cámara */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .planeta:hover {
-    transform: scale(1.6);
-    box-shadow: inset -4px -4px 10px rgba(0,0,0,0.6), 0 0 20px rgba(255,255,255,0.8);
-    z-index: 200;
+    transform: rotateX(-70deg) scale(1.6);
 }
 
-/* Anillos de Saturno */
+/* Anillo avanzado de Saturno */
 .anillo {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotateX(75deg);
+    transform: translate(-50%, -50%) rotateX(80deg);
     border-radius: 50%;
-    border: 6px solid rgba(238, 215, 161, 0.4);
-    border-top-color: rgba(238, 215, 161, 0.8);
-    border-bottom-color: rgba(238, 215, 161, 0.8);
+    border: 8px solid rgba(214, 194, 149, 0.4);
+    border-top: 8px solid rgba(186, 161, 108, 0.7);
+    border-bottom: 8px solid rgba(186, 161, 108, 0.7);
     pointer-events: none;
 }
 
+/* Animaciones controladas globales */
+.animacion-corriendo {
+    animation-play-state: running !important;
+}
+.animacion-pausada {
+    animation-play-state: paused !important;
+}
+
 @keyframes girarOrbita {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from { transform: rotateX(70deg) rotate(0deg); }
+    to { transform: rotateX(70deg) rotate(360deg); }
 }
 
 @keyframes rotacionInversa {
-    from { transform: rotate(0deg); }
+    from { transform: rotate(-0deg); }
     to { transform: rotate(-360deg); }
 }
