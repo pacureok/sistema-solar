@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema Solar - Explorador Profesional</title>
+    <title>Orrery Pro - Explorador del Sistema Solar</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div id="controles-simulacion">
+        <button id="btn-pausa" onclick="alternarAnimacion()">Pausar Órbitas</button>
+    </div>
 
     <div id="universo">
         <div class="sol" onclick="mostrarInfo('Sol')"></div>
